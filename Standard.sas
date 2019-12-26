@@ -10,7 +10,7 @@ data bank;
 
 * By default the inputs are considered as numeric
 * To specify character variable we have to give variable name followed by $ sign
-* COMMAw.d allows to read comma embedded numeric values; here dep is being read as 14 char comma embedded numeric with zero decimal;
+* COMMAw.d allows to read comma embedded numeric values, here dep is being read as 14 char comma embedded numeric with zero decimal;
 input did age sex$ dep comma14.0;
 
 * cards and datalines are used to provide instream data;
