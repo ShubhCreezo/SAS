@@ -48,8 +48,19 @@ Karma 03Nov2019 20-Dec-2020
 Aish  15Oct2018 18-Nov-2019
 ;
 
+DATA date3;
+input user$ adate ddate;
+* Julian date can be read and printed by SAS;
+informat adate monyy5. ddate julian.;
+datalines;
+Karma Dec20 2019010
+Bear  Jan19 2018150
+;
 
-PROC PRINT data=date2;
-* FORMAT allows us to print number of days to date in the desired format;
-format adate ddate mmddyyp8.;
+/* we can use weekdate to get week and date; if we increase the size of format then we can 
+get complete date in the format day, date/ month/ year; for complete date use length 34.*/
+PROC PRINT data=date;
+* FORMAT allows us to print number of days to date in the desired format.
+ the syntax(nearly all of them) used to read date in INFORMAT can also be used with FORMAT;
+format date weekdate5.;
 run;
