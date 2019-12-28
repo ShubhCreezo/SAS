@@ -1,0 +1,17 @@
+OPTIONS NONUMBER NODATE;
+TITLE "Practice Module!!!";
+
+LIBNAME PROJ1 "C:\Users\Shubham\Desktop\HomeDirectory\saslib";
+
+DATA MASTER;
+
+INPUT ID AGE SEX $20.;
+
+CARDS;
+1223334444 24 GOOD_FEMALE
+200 18 M
+;
+RUN;
+
+PROC PRINT DATA=MASTER;
+RUN;
