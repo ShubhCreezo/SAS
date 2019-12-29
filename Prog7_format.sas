@@ -76,13 +76,15 @@ value $gender_new
 
 /* We can print saved format in library */
 /* fmtlib allows us to do that */
-PROC FORMAT library=sasuser fmtlib cntlout=work;
+/* CNTLOUT is the name of the dataset to be created */
+PROC FORMAT library=work fmtlib cntlout=out_format;
 /* we can select any particular formats we want to save */
 /* select is optional here. default is all formats */
-select gender_new;
+select $gender_new;
 
 /* We can use previously saved formats */
-PROC FORMAT library=work cntlin=sasuser;
+/* cntlin is used to specify proc format dataset */
+PROC FORMAT library=work cntlin=out_format;
 /* we can include specific formats using select */
 
 /* fmterr allows us to ignore format errors and get output*/
