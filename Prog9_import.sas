@@ -32,7 +32,8 @@ PROC IMPORT datafile="/folders/myfolders/extfiles/sample_data_multiple_rows.txt"
 			dbms=csv out=new_data replace;
 getnames=no;
 run;			
-
+/* to import all the sheets from excel use libname ;
+   we cannot import multiple sheets using proc import statement*/
 /* We can export to any format by specifying dbms and outfile */
 
 PROC PRINT data=new_data;
