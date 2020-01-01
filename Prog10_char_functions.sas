@@ -48,5 +48,75 @@ a1= "I am getting late.";
 a2= indexw(a1,"get");
 run;
 
-PROC PRINT data=data5;
+/* VERIFY function*/
+* VERIFY allows us to check if given chars are present is a given string;
+DATA data6;
+str1= "Hellotyr";
+var= verify(str1, "Helo");
+run;
+
+/* SUBSTR allows us to extract a piece of a string */
+DATA data7;
+str="Karma Mumbai";
+var= substr(str,7);
+var2= substr(str,7,3);
+
+/* To extract a substring from last positon */
+DATA data8;
+input user$20.;
+datalines;
+KarmaMUM
+EricDEL
+;
+
+DATA data9;
+set data8;
+var= substr(user,length(user)-2);
+
+/* To concatenate strings */
+/* CATS removes blanks */
+/* CATX allows to add chars while concatenating */
+/* CATT removes leading blanks only */
+DATA data10;
+set sashelp.class;
+new= cat(name, age);
+new2= cats(name, age);
+new3= catt(name, age);
+new4= catx(':', name, age);
+run;
+
+/* We can change the alignment of data */
+/* Can only be used with chars- RIGHT LEFT */
+DATA data11;
+set sashelp.class;
+name1= right(name);
+run;
+
+/* more ways to remove spaces */
+/* TRIM removes trailing spaces */
+/* STRIP removes leadina and trailing spaces */
+/* SAS automatically removes trailing spaces */
+/* LENGTHM gives the length occupied in memory; especially good when counting trailing spaces*/
+DATA data12;
+string= "  Hello  Boss   ";
+lenstr= lengthm(string);
+strip= strip(string);
+lenstrip= lengthm(strip);
+trim= trim(string);
+lentrim= lengthm(trim);
+run;
+
+/* SCAN allows us to retreive words based on position; this is different from SUBSTR */
+DATA data13;
+str= "Hello! How are you?";
+str2= scan(str,3);
+str3= scan(str,-3);
+
+/* TRANWRD is the replace in SAS*/
+DATA data14;
+str= "hello! How are you?";
+str1= tranwrd(str, "hello", "Hi");
+run;
+
+PROC PRINT data=data14;
 run;
