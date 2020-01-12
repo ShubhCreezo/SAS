@@ -98,12 +98,14 @@ run;
 /* SAS automatically removes trailing spaces */
 /* LENGTHM gives the length occupied in memory; especially good when counting trailing spaces*/
 DATA data12;
-string= "  Hello  Boss   ";
+input string: $20.;
 lenstr= lengthm(string);
 strip= strip(string);
 lenstrip= lengthm(strip);
 trim= trim(string);
 lentrim= lengthm(trim);
+datalines;
+   Karma   
 run;
 
 /* SCAN allows us to retreive words based on position; this is different from SUBSTR */
