@@ -41,7 +41,8 @@ high= max(of q1-q4);
 low= min(of q1-q4);
 total_first_and_last= sum(q1,q4);
 
-PROC PRINT data=num3;
+* we can print a label for total using GRANDTOTAL_LABEL option;
+PROC PRINT data=num3 grandtotal_label="Total";
 sum q1-q4;
 run;
 
