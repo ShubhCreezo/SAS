@@ -32,6 +32,12 @@ PROC IMPORT datafile="/folders/myfolders/extfiles/sample_data_multiple_rows.txt"
 			dbms=csv out=new_data replace;
 getnames=no;
 run;			
+
+/* We can use filename statement to specify a fileref to a file location; this allows for better coding */
+filename Sample "/folders/myfolders/extfiles/sample_data_multiple_rows.txt"
+PROC IMPORT datafile=Sample dbms=csv out=new_data replace;
+run;
+
 /* to import all the sheets from excel use libname ;
    we cannot import multiple sheets using proc import statement*/
 /* We can export to any format by specifying dbms and outfile */
