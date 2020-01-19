@@ -40,7 +40,11 @@ run;
 
 /* to import all the sheets from excel use libname ;
    we cannot import multiple sheets using proc import statement*/
+/* All the sheet names are stored as datasets of the new library. */
+libname sample XLSX "/folders/myfolders/extfiles/sample.xlsx";
+
 /* We can export to any format by specifying dbms and outfile */
+
 
 PROC PRINT data=new_data;
 run;
