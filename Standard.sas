@@ -27,3 +27,13 @@ options nonumber nodate;
 * This is PROC step, it prints data
 * giving NOOBS option allows us to remove the observation number column that gets printed by default;
 proc print noobs;
+
+/* We can debug using PUTLOG, suppose there is a symantic error which doesn't shows in the saslog, now we can use PUTLOG to print the values
+of the variables and thus can find if the values are getting correctly passed, this helps in finding symantic errors; 
+This PUTLOG can be removed and the step can be resubmitted after we have corrected the error*/
+data sample;
+set sashelp.class;
+avg= mean(height+weight);
+PUTLOG height= weight= avg=;
+if avg<30;
+run;
