@@ -28,7 +28,7 @@ options nonumber nodate;
 * giving NOOBS option allows us to remove the observation number column that gets printed by default;
 proc print noobs;
 
-/* We can debug using PUTLOG, suppose there is a symantic error which doesn't shows in the saslog, now we can use PUTLOG to print the values
+/* We can debug using PUTLOG, suppose there is a logic error which doesn't shows in the saslog, now we can use PUTLOG to print the values
 of the variables and thus can find if the values are getting correctly passed, this helps in finding symantic errors; 
 This PUTLOG can be removed and the step can be resubmitted after we have corrected the error*/
 data sample;
@@ -37,3 +37,14 @@ avg= mean(height+weight);
 PUTLOG height= weight= avg=;
 if avg<30;
 run;
+
+/* We can also use PUT statement to print our own error message along with variables(variable_name=; '=' sign allows us to print variable
+value along with its name else only value gets printed in log) */
+/* Here PUT statement is executed unconditionally although we can use it with IF THEN */
+data sample;
+set sashelp.class;
+avg= mean(height+weight);
+if avg<30;
+PUT "The condition is met";
+run;
+
