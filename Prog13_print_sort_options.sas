@@ -110,6 +110,8 @@ PROC PRINT data=print_sort5;
 first variable and makes the grouping cleaner */
 /* If ID and VAR statements both contain same variable then it is printed twice; since ID allows us to replace obs and instead list 
 observations by ID variable values and VAR allows us to choose the variables and decide their order */
+/* BY NOTSORTED <variable name>; this allows us to group contiguous variable values without sorting; if 5 values are repeating
+then they form one group and this repeats to form groups*/
 PROC SORT data=print;
 by age;
 
