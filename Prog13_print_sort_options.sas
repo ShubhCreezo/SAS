@@ -108,6 +108,8 @@ PROC PRINT data=print_sort5;
 /* We can group variables by including BY and ID statements in PRINT step */
 /* The dataset needs to be sorted first, ID allows us to put the sorted variable as the 
 first variable and makes the grouping cleaner */
+/* If ID and VAR statements both contain same variable then it is printed twice; since ID allows us to replace obs and instead list 
+observations by ID variable values and VAR allows us to choose the variables and decide their order */
 PROC SORT data=print;
 by age;
 
