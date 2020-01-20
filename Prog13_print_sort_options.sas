@@ -125,6 +125,21 @@ by age;
 pageby age;
 run;
 
+/*We can print definite number of observations using FIRSTOBS AND OBS system options*/
+/* Below statement reads observations 5 through 10 */
+option firstobs=5 obs=10;
+proc print data=sashelp.class;
+run;
+/* We can reset obs in the same program by again using option statement */
+option firstobs=1 obs=max;
+/* Other way to approach selection of a range of data is by using a dataset option; this we do by using parentheses after
+we include a dataset*/
+data sample1;
+set sample(firstobs=10 obs=15);
+run;
+
+proc print data=sample1;
+run;
 
 
 
