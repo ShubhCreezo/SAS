@@ -143,5 +143,8 @@ run;
 proc print data=sample1;
 run;
 
-
+/* We can cancel a title by specifying a title statement with lower value or only title statement with no value to cancel all
+titles; same applies for footnote*/
+* For example below title statement allows title1 to print although any higher value title is cancelled;
+title2;
 
