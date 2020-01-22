@@ -110,6 +110,8 @@ PROC PRINT data=print_sort5;
 first variable and makes the grouping cleaner */
 /* If ID and VAR statements both contain same variable then it is printed twice; since ID allows us to replace obs and instead list 
 observations by ID variable values and VAR allows us to choose the variables and decide their order */
+/* BY NOTSORTED <variable name>; this allows us to group contiguous variable values without sorting; if 5 values are repeating
+then they form one group and this repeats to form groups*/
 PROC SORT data=print;
 by age;
 
@@ -117,7 +119,6 @@ PROC PRINT data=print;
 id age;
 by age;
 run;
-
 /* We can get grouped data on different pages by using PAGEBY statement ; must always be used
 with BY statement */
 PROC PRINT data=print;
@@ -125,6 +126,20 @@ by age;
 pageby age;
 run;
 
+/*We can print definite number of observations using FIRSTOBS AND OBS system options*/
+/* Below statement reads observations 5 through 10 */
+option firstobs=5 obs=10;
+proc print data=sashelp.class;
+run;
+/* We can reset obs in the same program by again using option statement */
+option firstobs=1 obs=max;
+/* Other way to approach selection of a range of data is by using a dataset option; this we do by using parentheses after
+we include a dataset*/
+data sample1;
+set sample(firstobs=10 obs=15);
+run;
+
+proc print data=sample1;
 /* Use of WHERE with PRINT step */
 /*
 	gt or >, lt or <, le or <=, ge or >=, = or eq, ^= or ne, contains or ?, and or &, or or |, in 
@@ -133,4 +148,7 @@ PROC PRINT data=print;
 where age ne 18;
 run;
 
-
+/* We can cancel a title by specifying a title statement with lower value or only title statement with no value to cancel all
+titles; same applies for footnote*/
+* For example below title statement allows title1 to print although any higher value title is cancelled;
+title2;
