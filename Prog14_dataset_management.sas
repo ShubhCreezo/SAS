@@ -38,7 +38,7 @@ run;
 ex, Birth date and transaction date may be having name 'date' in two different datasets; now if we want to merge these two 
 datasets, then dates will get overwritten by one or the other*/
 DATA sample3;
-MERGE data1(date=birth_date) data2(date=txn_date);
+MERGE data1(rename=(date=birth_date)) data2(rename=(date=txn_date));
 BY user;
 RUN;
 
