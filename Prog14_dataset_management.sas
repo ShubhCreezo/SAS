@@ -16,8 +16,31 @@ Pragya 23 23.2
 ;
 
 /* We can join two datasets using SET */
+/* concantenating SET statements produce final dataset containing all the obervations from all the SET datasets */
 DATA data3;
 set data1 data2;
+
+/* If SET is used sequentially then it works as a MERGE BY statement */
+DATA sample;
+SET data1;
+SET data2;
+run;
+
+/* MERGE BY statement */
+/* This allows us to merge datasets based on a sorted key */
+/* We will need to sort the datasets by key before using MERGE, SET can be used instead if we wish to merge unsorted datasets */
+DATA sample2;
+MERGE data1 data2;
+BY user;
+run;
+
+/* We can rename variables in a dataset, since sometimes two different variables may be having same name in two datasets.
+ex, Birth date and transaction date may be having name 'date' in two different datasets; now if we want to merge these two 
+datasets, then dates will get overwritten by one or the other*/
+DATA sample3;
+MERGE data1(date=birth_date) data2(date=txn_date);
+BY user;
+RUN;
 
 /* we can also use PROC APPEND for joining two datasets 
    If any variable is missing in base datasets then PROC APPEND will throw an error,
