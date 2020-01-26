@@ -92,6 +92,7 @@ PROC FORMAT library=work cntlin=out_format;
 options fmterr fmtsearch=(sasuser);
 
 /* We can specify range in FORMAT*/
+/* We can also specify multiple values in format separated by commas, ex "X","Y","Z"= "ABC"*/
 PROC FORMAT;
 value age_new
 10-20= "Young"
@@ -103,3 +104,13 @@ PROC PRINT data=sashelp.class;
 format sex $gender_new. age age_new.;
 run;
 
+libname samplelib "lib_location";
+
+proc format lib=samplelib; 
+   value agefmt 
+low-<13='child' 
+         13-<20='teenager' 
+         20-<65='adult' 
+         65-high='senior citizen' 
+other='unknown'; 
+run;
