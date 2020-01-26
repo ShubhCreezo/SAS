@@ -75,7 +75,7 @@ value $gender_new
 "F"=2;
 
 /* We can print saved format in library */
-/* fmtlib allows us to do that */
+/* fmtlib allows us to display a list of all formats in our catalog */
 /* CNTLOUT is the name of the dataset to be created */
 PROC FORMAT library=work fmtlib cntlout=out_format;
 /* we can select any particular formats we want to save */
