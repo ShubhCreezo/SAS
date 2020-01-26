@@ -13,7 +13,8 @@ RUN;
 ODS from PDV */
 
 /* WHILE and UNTIL */
-/* UNTIL allows for at least one iteration */
+/* UNTIL allows for at least one iteration even when condition is not met as UNTIL checks the condition at the end of loop 
+on the contrary WHILE checks the condition at the start of loop */
 DATA sample2;
 SET sashelp.class;
 DO i= 1 to 10 WHILE(height<=500);
