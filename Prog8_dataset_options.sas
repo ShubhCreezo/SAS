@@ -83,7 +83,11 @@ Aish Female
 ;
 
 DATA data11;
+/* If we use multiple datasets in a single set statement then the number of observations in the new data set is the total number of observations from all the 
+datasets. All the variables are also present in the output dataset.*/
 * set data9 data10;
+/* If we use multiple set statements then where same-named variables occur, values that are read from the second data set replace those that are read from the first 
+data set. Also, the number of observations in the new data set is the number of observations in the smallest original data set. */
 set data9;
 set data10;
 run;
